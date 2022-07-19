@@ -27,6 +27,23 @@ export class Board {
     return this.cells[y][x];
   }
 
+  public highlightCells(selectedCell: Cell | null) {
+    // проходимся циклом по всей доске и проверяем, можем ли переместить фигуру на выбранную ячейку
+    for (let i = 0; i < this.cells.length; i += 1) {
+      const row = this.cells[i];
+      for (let j = 0; j < row.length; j += 1) {
+        const target = row[j];
+        target.avaliable = !!selectedCell?.figure?.canMove(target);
+      }
+    }
+  }
+
+  public getCopyBoard(): Board {
+    const newBoard = new Board();
+    newBoard.cells = this.cells;
+    return newBoard;
+  }
+
   private addPawns() {
     for (let i = 0; i < 8; i += 1) {
       new Pawn(Colors.BLACK, this.getCell(i, 1));
