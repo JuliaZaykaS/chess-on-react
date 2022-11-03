@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import BoardComponent from "./components/BoardComponent";
+import { EndGame } from "./components/EndGame";
 import { LostFigures } from "./components/LostFigures";
 import { Timer } from "./components/Timer";
 import { Board } from "./models/Board";
@@ -35,12 +36,15 @@ const App = () => {
   return (
     <div className="app">
       <Timer currentPlayer={currentPlayer} restart={restart} />
-      <BoardComponent
-        board={board}
-        setBoard={setBoard}
-        currentPlayer={currentPlayer}
-        swapPlay={swapPlay}
-      ></BoardComponent>
+      <div className="boardWrapper">
+        <BoardComponent
+          board={board}
+          setBoard={setBoard}
+          currentPlayer={currentPlayer}
+          swapPlay={swapPlay}
+        ></BoardComponent>
+        {/* <EndGame text="Вы выиграли" type="win" /> */}
+      </div>
       <div>
         <LostFigures
           title={"Черные фигуры"}

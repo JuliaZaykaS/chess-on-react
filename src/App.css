@@ -10,6 +10,9 @@
   justify-content: center;
   align-items: center;
 }
+.boardWrapper {
+  position: relative;
+}
 
 .board {
   width: calc(64px * 8);
@@ -59,4 +62,37 @@
   padding: 30px;
   margin-left: 50px;
   background-color: lightgrey;
+}
+
+.message {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  /* width: 500px;
+  height: 500px; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.winMessage {
+  color: green;
+  position: absolute;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(2px);
+  z-index: 99;
+}
+.loseMessage {
+  color: red;
+  position: absolute;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(2px);
+  z-index: 99;
+}
+.checkMessage {
+  color: darkgoldenrod;
 }

@@ -21,10 +21,21 @@ export const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
     if (timer.current) {
       clearInterval(timer.current);
     }
+    // const callback =
+    //   currentPlayer?.color === Colors.WHITE
+    //     ? decrementWhiteTimer
+    //     : decrementBlackTimer;
     const callback =
       currentPlayer?.color === Colors.WHITE
-        ? decrementWhiteTimer
-        : decrementBlackTimer;
+        ? () => {
+            decrementWhiteTimer();
+            setBlackTime(defaultTime);
+          }
+        : () => {
+            decrementBlackTimer();
+            setWhiteTime(defaultTime);
+          };
+
     timer.current = setInterval(callback, 1000);
   }
   function decrementBlackTimer() {
